@@ -4,7 +4,7 @@ import "./App.css";
 import SearchIcon from "./search.svg";
 
 // Define API endpoint
-const API_URL = "http://www.omdbapi.com?apikey=b92d9c5e";
+const API_URL = "https://www.omdbapi.com?apikey=b92d9c5e";
 
 // Main component for the app
 const App = () => {
