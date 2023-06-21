@@ -5,14 +5,6 @@ import SearchIcon from "./search.svg";
 
 const API_URL = "http://www.omdbapi.com?apikey=b92d9c5e";
 
-const movie1 = {
-  Title: "Spiderman",
-  Year: "1990",
-  imdbID: "tt0100669",
-  Type: "movie",
-  Poster: "N/A",
-};
-
 const App = () => {
   const [movies, setMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -28,18 +20,28 @@ const App = () => {
     searchMovies(`Spiderman`);
   }, []);
 
+  // new onSubmit handler
+  const handleSubmit = (e) => {
+    e.preventDefault(); // prevent the page from reloading
+    searchMovies(searchTerm);
+  };
+
   return (
     <div className="app">
       <h1>MovieLand</h1>
 
-      <div className="search">
+      <form className="search" onSubmit={handleSubmit}>
         <input
           placeholder="Search for movies"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <img src={SearchIcon} alt="search" onClick={() => searchMovies(searchTerm)} />
-      </div>
+        <img
+          src={SearchIcon}
+          alt="search"
+          onClick={() => searchMovies(searchTerm)}
+        />
+      </form>
 
       {movies?.length > 0 ? (
         <div className="container">
